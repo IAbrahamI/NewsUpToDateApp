@@ -10,18 +10,10 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Navigator} />
+        <Stack.Screen name="News Up To Date" component={Navigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1, 
-    // alignItems: 'center', 
-    // justifyContent: 'center'
-  }
-});
 
 export default App;
