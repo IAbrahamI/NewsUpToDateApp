@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
-const NewsList = ({}) =>{
+const NewsList = ({item}) =>{
     return(
         <View style={styles.list}>
-            <Text style={styles.title}>Moderna: Erster mRNA-Impfstoff gegen Grippe - BILD</Text>
-            <Text style={styles.author}>Bild.de</Text>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.author}>{item.author}</Text>
             <Image style={styles.image}></Image>
-            <Text style={styles.description}>US-Pharmahersteller Moderna zum ersten Mal auch die Entwicklung eines mRNA-Impfstoff gegen saisonale Grippe gelungen. Er soll vor 4 Varianten schützen</Text>
+            <Text style={styles.description}>{item.description}</Text>
         </View>
     );
 }
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     title:{
         width: width,
         marginHorizontal: width*0.05,
-        marginVertical: width*0.03,
+        marginTop: height*0.01,
         color: 'black',
         fontWeight: 'bold',
         maxWidth: '90%',
