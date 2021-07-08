@@ -1,16 +1,24 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, Linking } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
 const NewsList = ({item}) =>{
+
+    handleClick = () =>{
+        Linking.openURL(item.url);
+    };
     return(
-        <View style={styles.list}>
+        <TouchableOpacity onPress={this.handleClick}>
+           <View style={styles.list}>
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.author}>{item.author}</Text>
-            <Image style={styles.image}></Image>
+            <Image style={styles.image} source={{uri: item.urlToImage}}/>
             <Text style={styles.description}>{item.description}</Text>
-        </View>
+            <Text style={styles.date}>{item.publishedAt}</Text>
+         </View> 
+        </TouchableOpacity>
+        
     );
 }
 
@@ -34,10 +42,11 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     description:{
-        marginHorizontal: width*0.02,
+        width: width,
+        marginHorizontal: width*0.05,
         margin: width*0.02,
         color: 'lightgray',
-        maxWidth: '95%',
+        maxWidth: '90%',
         fontSize: 18
     },
     author:{
@@ -47,10 +56,17 @@ const styles = StyleSheet.create({
     },
     image:{
         width: width,
-        height: height/6,
+        height: height/4,
+        maxWidth: '90%',
         marginHorizontal: width*0.05,
         marginVertical: height*0.02
 
+    },
+    date:{
+        width: width,
+        color: 'gray',
+        marginHorizontal: width*0.05,
+        marginBottom: 5 
     }
 });
 
